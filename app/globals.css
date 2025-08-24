@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+h1, h2, h3 {
+  font-family: var(--font-montserrat);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
