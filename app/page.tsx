@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -27,18 +28,18 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="#learn-more"
+          <Link
+            href="/learn-more"
             className="flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-300 shadow-lg"
           >
             Learn More
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="/contact"
             className="flex items-center justify-center px-6 py-3 border border-purple-600 text-base font-medium rounded-md text-purple-400 bg-transparent hover:bg-purple-900 transition-colors duration-300 shadow-lg"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
 
         {/* New Features Section */}
