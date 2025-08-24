@@ -40,6 +40,32 @@ export default function Home() {
             Contact Us
           </a>
         </div>
+
+        {/* New Features Section */}
+        <section className="w-full max-w-5xl mt-20 text-center">
+          <h2 className="text-4xl font-bold mb-12 text-purple-300">Our Innovative Solutions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Metro Route Finder App */}
+            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-300 hover:scale-105">
+              <h3 className="text-2xl font-semibold mb-4 text-white">Metro Route Finder App</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Navigate urban transit with ease. Our intelligent Metro Route Finder App provides
+                the fastest and most convenient routes, real-time updates, and station information
+                to enhance your daily commute.
+              </p>
+            </div>
+
+            {/* Automated Number Plate Recognition System */}
+            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-300 hover:scale-105">
+              <h3 className="text-2xl font-semibold mb-4 text-white">Automated Number Plate Recognition</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Revolutionize access control and vehicle management. Our ANPR system offers
+                high-accuracy plate recognition for secure parking, traffic monitoring, and
+                efficient law enforcement applications.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
