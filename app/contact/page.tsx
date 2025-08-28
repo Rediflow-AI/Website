@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import React from 'react';
 
 export default function ContactPage() {
   return (
@@ -7,9 +7,7 @@ export default function ContactPage() {
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_center,_rgba(128,0,128,0.3)_0%,_transparent_70%)]"></div>
 
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex flex-col">
-        <h1 className="text-6xl font-bold text-center mt-8 mb-4 text-purple-400">
-          Contact Us
-        </h1>
+        <h1 className="text-6xl font-bold text-center mt-8 mb-4 text-purple-400">Contact Us</h1>
         <p className="text-xl text-center max-w-2xl mb-8 text-gray-300">
           If you have any questions or inquiries, please feel free to reach out to us using the form below.
         </p>
@@ -23,26 +21,28 @@ export default function ContactPage() {
             <label htmlFor="email" className="block text-lg font-medium text-gray-300 mb-2">
               Your email:
             </label>
-            <input 
-              type="email" 
-              name="email" 
+            <input
+              type="email"
+              name="email"
               id="email"
               className="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             />
           </div>
+
           <div className="mb-6">
             <label htmlFor="message" className="block text-lg font-medium text-gray-300 mb-2">
               Your message:
             </label>
-            <textarea 
-              name="message" 
+            <textarea
+              name="message"
               id="message"
               className="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 min-h-[120px]"
               required
             ></textarea>
           </div>
-          <button 
+
+          <button
             type="submit"
             className="w-full bg-purple-600 text-white py-3 rounded-md font-semibold hover:bg-purple-700 transition-colors duration-300"
           >
