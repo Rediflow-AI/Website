@@ -32,6 +32,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#0b0f13" />
+        <style
+          precedence="default"
+          href="critical-styles"
+        >{`
+          /* Ensure immediate dark background and force dark color-scheme so UA forced themes don't invert colors */
+          :root, html, body { background: #0b0f13 !important; color-scheme: dark !important; }
+          /* Keep header dark on small screens before CSS loads */
+          @media (max-width: 767px) { .site-shell { background: #0b0f13 !important; } }
+        `}</style>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased flex flex-col min-h-screen`}
       >
