@@ -1,0 +1,17 @@
+[
+  {
+    "name": "App 1",
+    "description": "This is the first app.",
+    "icon": "/file.svg"
+  },
+  {
+    "name": "App 2",
+    "description": "This is the second app.",
+    "icon": "/globe.svg"
+  },
+  {
+    "name": "App 3",
+    "description": "This is the third app.",
+    "icon": "/window.svg"
+  }
+]

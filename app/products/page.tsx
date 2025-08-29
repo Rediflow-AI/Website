@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { App } from '../../types/app';
 
 export default function ProductsPage() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -49,23 +50,13 @@ export default function ProductsPage() {
     }
   };
 
-  const existingApps = [
-    {
-      name: 'App 1',
-      description: 'This is a description for App 1.',
-      icon: '/file.svg',
-    },
-    {
-      name: 'App 2',
-      description: 'This is a description for App 2.',
-      icon: '/globe.svg',
-    },
-    {
-      name: 'App 3',
-      description: 'This is a description for App 3.',
-      icon: '/window.svg',
-    },
-  ];
+  const [existingApps, setExistingApps] = useState<App[]>([]);
+
+  useEffect(() => {
+    fetch('/data/apps.json')
+      .then((response) => response.json())
+      .then((data: App[]) => setExistingApps(data));
+  }, []);
 
   const getSection1Styles = (element: 'left' | 'right') => {
     const progress = Math.min(1, Math.max(0, scrollProgress * 3));
@@ -120,7 +111,30 @@ export default function ProductsPage() {
       {/* Coming Soon Section 1 */}
       <section className="h-full snap-start flex flex-col md:flex-row items-center justify-center text-center md:text-left relative overflow-hidden">
         <div style={{opacity: 1 - Math.min(1, scrollProgress * 3)}} className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_center,_rgba(255,165,0,0.3)_0%,_transparent_70%)]"></div>
-        <div style={getSection1Styles('left')} className="z-10 p-8 md:w-1/2">
+        {/* Mobile Carousel for Section 1 */}
+        <div className="md:hidden flex overflow-x-scroll snap-x snap-mandatory w-full h-full">
+            <div className="z-10 p-8 w-full flex-shrink-0 snap-center flex flex-col items-center justify-center">
+              {/* App Name at Top with animation */}
+              <h1 className="text-6xl md:text-8xl font-bold mb-4 text-orange-400 min-h-[96px]">
+                {isInitialAnimationPlayed ? 'Metro Route Finder App' : comingSoonText}
+                {!isInitialAnimationPlayed && <span>|</span>}
+              </h1>
+              {/* Description below it */}
+              <p className="text-lg md:text-xl max-w-3xl mx-auto md:mx-0 text-gray-300 mb-8">
+                Our upcoming Metro Route Finder app will revolutionize your daily commute. Get real-time updates, find the fastest routes, and navigate the metro system like a pro.
+              </p>
+              
+              <a href="https://www.linkedin.com/company/your-company" target="_blank" rel="noopener noreferrer" className="inline-block bg-orange-600 text-white py-3 px-8 rounded-full font-semibold hover:bg-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Coming Soon
+              </a>
+            </div>
+            <div className="z-10 p-8 w-full flex-shrink-0 snap-center flex justify-center items-center">
+                <Image src="/images/metroComingSoon.png" alt="Metro Coming Soon" width={300} height={600} className="rounded-lg" />
+            </div>
+        </div>
+
+        {/* Desktop Layout for Section 1 */}
+        <div style={getSection1Styles('left')} className="z-10 p-8 md:w-1/2 hidden md:block">
           {/* App Name at Top with animation */}
           <h1 className="text-6xl md:text-8xl font-bold mb-4 text-orange-400 min-h-[96px]">
             {isInitialAnimationPlayed ? 'Metro Route Finder App' : comingSoonText}
@@ -146,12 +160,28 @@ export default function ProductsPage() {
       {/* Coming Soon Section 2 */}
       <section className="h-full snap-start flex flex-col md:flex-row items-center justify-center text-center md:text-left relative overflow-hidden">
         <div style={{opacity: Math.min(1, Math.max(0, (scrollProgress - 0.67) * 3))}} className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_center,_rgba(128,0,128,0.3)_0%,_transparent_70%)]"></div>
-        {/* Image column (left) */}
+        {/* Mobile Carousel for Section 2 */}
+        <div className="md:hidden flex overflow-x-scroll snap-x snap-mandatory w-full h-full">
+            <div className="z-10 p-8 w-full flex-shrink-0 snap-center flex justify-center items-center">
+              <div className="w-full h-64 bg-purple-900 bg-opacity-50 rounded-lg"></div>
+            </div>
+            <div className="z-10 p-8 w-full flex-shrink-0 snap-center flex flex-col items-center justify-center">
+                <h1 className="text-6xl md:text-8xl font-bold mb-4 text-purple-400">Coming Soon</h1>
+                <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-purple-300">Attendance Tracker App</h2>
+                <p className="text-lg md:text-xl max-w-3xl mx-auto md:mx-0 text-gray-300 mb-8">
+                  Track attendance with ease. Our new app will help you manage and monitor attendance for your team, students, or events.
+                </p>
+                <a href="https://www.linkedin.com/company/rediflow-ai/" target="_blank" rel="noopener noreferrer" className="inline-block bg-purple-600 text-white py-3 px-8 rounded-full font-semibold hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  Follow us for updates &rarr;
+                </a>
+            </div>
+        </div>
+
+        {/* Desktop Layout for Section 2 */}
         <div style={getSection2Styles('left')} className="z-10 p-8 md:w-1/4 hidden md:block flex justify-end">
           <div className="w-full h-64 bg-purple-900 bg-opacity-50 rounded-lg"></div>
         </div>
-        {/* Text column (right) */}
-        <div style={getSection2Styles('right')} className="z-10 p-8 md:w-1/2">
+        <div style={getSection2Styles('right')} className="z-10 p-8 md:w-1/2 hidden md:block">
             <h1 className="text-6xl md:text-8xl font-bold mb-4 text-purple-400">Coming Soon</h1>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-purple-300">Attendance Tracker App</h2>
             <p className="text-lg md:text-xl max-w-3xl mx-auto md:mx-0 text-gray-300 mb-8">
@@ -162,22 +192,22 @@ export default function ProductsPage() {
             </a>
         </div>
         
-        <button onClick={() => scrollToSection(0)} className="absolute bottom-24 right-24 bg-purple-600 text-white p-4 rounded-full hover:bg-purple-700 transition-colors duration-300 z-20">
+        <button onClick={() => scrollToSection(0)} className="absolute bottom-24 right-8 bg-purple-600 text-white p-4 rounded-full hover:bg-purple-700 transition-colors duration-300 z-20">
           &uarr;
         </button>
-        <button onClick={() => scrollToSection(2)} className="absolute bottom-24 right-8 bg-purple-600 text-white p-4 rounded-full hover:bg-purple-700 transition-colors duration-300 z-20">
+        {/* <button onClick={() => scrollToSection(2)} className="absolute bottom-24 right-8 bg-purple-600 text-white p-4 rounded-full hover:bg-purple-700 transition-colors duration-300 z-20">
           &darr;
-        </button>
+        </button> */}
       </section>
 
-      {/* Existing Apps Section */}
+      {/* Existing Apps Section
       <section className="h-full snap-start flex flex-col items-center justify-center text-center relative">
         <div style={getSection3Styles()} className="w-full max-w-5xl mx-auto px-8">
           <h2 className="text-4xl font-bold text-center mb-12 text-purple-300">Our Existing Apps</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {existingApps.map((app, index) => (
               <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105">
-                <img src={app.icon} alt={`${app.name} icon`} className="w-16 h-16 mb-4" />
+                <Image src={app.icon} alt={`${app.name} icon`} width={64} height={64} className="w-16 h-16 mb-4" />
                 <h3 className="text-2xl font-semibold mb-2 text-white">{app.name}</h3>
                 <p className="text-gray-400">{app.description}</p>
               </div>
@@ -187,7 +217,7 @@ export default function ProductsPage() {
         <button onClick={() => scrollToSection(1)} className="absolute bottom-24 right-8 bg-purple-600 text-white p-4 rounded-full hover:bg-purple-700 transition-colors duration-300 z-20">
           &uarr;
         </button>
-      </section>
+      </section> */}
     </div>
   );
 }
