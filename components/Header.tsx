@@ -23,15 +23,15 @@ export default function Header() {
           <Link href="/learn-more" className={`text-sm text-white/90 hover:text-white transition ${pathname === "/learn-more" ? "font-semibold" : "font-medium"}`}>
             Our story
           </Link>
+          <Link href="/products" className={`text-sm text-white/90 hover:text-white transition ${pathname === "/products" ? "font-semibold" : "font-medium"}`}>
+            Products
+          </Link>
           <Link href="/careers" className={`text-sm text-white/90 hover:text-white transition ${pathname === "/careers" ? "font-semibold" : "font-medium"}`}>
             Careers
           </Link>
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link href="/apps" className="text-sm text-white/90 px-3 py-2 rounded-full border border-white/10 hover:border-white/30 transition">
-            Our Apps
-          </Link>
           <Link href="/contact" className="text-sm bg-white text-black px-4 py-2 rounded-full font-semibold shadow-sm hover:shadow-md transition">
             Contact Us
           </Link>

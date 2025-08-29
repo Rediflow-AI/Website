@@ -3,70 +3,78 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-gray-950 text-gray-100 relative overflow-hidden">
-      {/* Background gradient */}
+    <main className="flex min-h-screen flex-col items-center justify-center p-16 bg-gray-950 text-gray-100 relative overflow-hidden">
+      {/* Background gradient (unchanged) */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_center,_rgba(128,0,128,0.3)_0%,_transparent_70%)]"></div>
 
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex flex-col">
-        <div className="relative flex place-items-center">
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/logo.png"
-            alt="Rediflow AI Logo"
-            width={180}
-            height={180}
-            priority
-          />
+      <div className="z-10 w-full max-w-6xl text-center">
+        <div className="mt-10 mb-8">
+          <Link
+            href="https://www.linkedin.com/company/rediflow-ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Rediflow AI on LinkedIn"
+            className="inline-flex items-center px-3 py-2 bg-white/10 rounded-full text-sm text-gray-200 hover:bg-white/15 transition"
+          >
+            <span className="mr-1 w-7 h-7 flex items-center justify-center overflow-hidden">
+              <Image src="/linkedin-round-no-bg.png" alt="LinkedIn" width={28} height={28} />
+            </span>
+            <span>LinkedIn</span>
+          </Link>
         </div>
 
-        <h1 className="text-6xl font-bold text-center mt-8 mb-4 text-purple-400">
-          Rediflow AI
+        <h1 className="mx-auto text-[56px] md:text-[88px] leading-[0.95] font-extrabold text-white max-w-4xl">
+          <span className="block text-gray-400 font-semibold pb-5 text-3xl md:text-4xl">One codebase. Infinite reach.</span>
+          <span className="block text-5xl md:text-[88px]">Unified solutions,</span>
+          <span className="block text-5xl md:text-[88px]">enhanced by adaptive AI</span>
         </h1>
-        <p className="text-xl text-center max-w-2xl mb-8 text-gray-300">
-          Empowering your business with cutting-edge artificial intelligence solutions.
-          Streamline workflows, enhance decision-making, and unlock new possibilities.
+
+        <p className="mt-8 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+          We craft mobile and desktop experiences that scale — blending clean design, robust engineering,
+          and AI integrations that make products smarter and teams faster.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link
-            href="/learn-more"
-            className="flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-300 shadow-lg"
-          >
-            Learn More
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <Link href="/learn-more" className="px-6 py-3 bg-white text-black rounded-full font-medium shadow-sm hover:shadow-md transition">
+            What&apos;s New
           </Link>
-          <Link
-            href="/contact"
-            className="flex items-center justify-center px-6 py-3 border border-purple-600 text-base font-medium rounded-md text-purple-400 bg-transparent hover:bg-purple-900 transition-colors duration-300 shadow-lg"
-          >
-            Contact Us
+          <Link href="/contact" className="px-6 py-3 bg-gray-800/60 text-gray-200 rounded-full font-medium border border-white/10 hover:bg-gray-800 transition">
+            Contact us
           </Link>
         </div>
 
-        {/* New Features Section */}
-        <section className="w-full max-w-5xl mt-20 text-center">
-          <h2 className="text-4xl font-bold mb-12 text-purple-300">Our Innovative Solutions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Metro Route Finder App */}
-            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-300 hover:scale-105">
-              <h3 className="text-2xl font-semibold mb-4 text-white">Metro Route Finder App</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Navigate urban transit with ease. Our intelligent Metro Route Finder App provides
-                the fastest and most convenient routes, real-time updates, and station information
-                to enhance your daily commute.
-              </p>
-            </div>
+        {/* decorative device area / partner logos */}
+        <div className="mt-16 w-full max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-10 text-sm text-gray-300 opacity-60">
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-2">
+                <Image src="/flutter-logo.png" alt="Flutter" width={48} height={24} />
+                <span className="text-gray-300 font-semibold ">Flutter</span>
+              </div>
 
-            {/* Automated Number Plate Recognition System */}
-            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-300 hover:scale-105">
-              <h3 className="text-2xl font-semibold mb-4 text-white">Automated Number Plate Recognition</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Revolutionize access control and vehicle management. Our ANPR system offers
-                high-accuracy plate recognition for secure parking, traffic monitoring, and
-                efficient law enforcement applications.
-              </p>
+              <div className="flex items-center gap-2">
+                <Image src="/openai-logo.png" alt="OpenAI" width={48} height={24} />
+                <span className="text-gray-300 font-semibold ">OpenAI</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Image src="/langchain-logo.png" alt="LangChain" width={48} height={24} />
+                <span className="text-gray-300 font-semibold ">LangChain</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Image src="/firebase-logo.png" alt="Firebase" width={24} height={24} />
+                <span className="text-gray-300 font-semibold ">Firebase</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Image src="/mongodb-logo.png" alt="MongoDB" width={96} height={36} />
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+
+
       </div>
     </main>
   );
