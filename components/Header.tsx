@@ -22,7 +22,7 @@ export default function Header() {
         <nav className="hidden md:flex space-x-8 items-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
           {[
             { href: "/", label: "Home" },
-            { href: "/learn-more", label: "Our story" },
+            { href: "/about-us", label: "About us" },
             { href: "/products", label: "Products" },
             { href: "/careers", label: "Careers" },
           ].map((item) => (
@@ -42,8 +42,8 @@ export default function Header() {
 
         {/* actions + mobile button */}
         <div className="flex items-center gap-3 z-20">
-          <Link href="/contact" className="hidden md:inline-flex text-sm px-4 py-2 rounded-md font-semibold border border-white/10 text-white hover:bg-white/6 transition">
-            Contact
+          <Link href="/contact" className="hidden md:inline-flex text-sm px-3 py-1 rounded-full font-semibold bg-white text-black shadow-sm hover:shadow-md transition">
+            Contact Us
           </Link>
 
           <button
@@ -73,8 +73,8 @@ export default function Header() {
             <Link href="/" onClick={() => setOpen(false)} className={`py-2 px-3 rounded-md text-white/90 hover:text-white ${pathname === "/" ? "font-semibold" : "font-medium"}`}>
               Home
             </Link>
-            <Link href="/learn-more" onClick={() => setOpen(false)} className={`py-2 px-3 rounded-md text-white/90 hover:text-white ${pathname === "/learn-more" ? "font-semibold" : "font-medium"}`}>
-              Our story
+            <Link href="/about-us" onClick={() => setOpen(false)} className={`py-2 px-3 rounded-md text-white/90 hover:text-white ${pathname === "/about-us" ? "font-semibold" : "font-medium"}`}>
+              About us
             </Link>
             <Link href="/products" onClick={() => setOpen(false)} className={`py-2 px-3 rounded-md text-white/90 hover:text-white ${pathname === "/products" ? "font-semibold" : "font-medium"}`}>
               Products
@@ -82,7 +82,7 @@ export default function Header() {
             <Link href="/careers" onClick={() => setOpen(false)} className={`py-2 px-3 rounded-md text-white/90 hover:text-white ${pathname === "/careers" ? "font-semibold" : "font-medium"}`}>
               Careers
             </Link>
-            <Link href="/contact" onClick={() => setOpen(false)} className="mt-2 py-3 px-4 bg-white text-black rounded-full font-semibold w-full text-center">
+            <Link href="/contact" onClick={() => setOpen(false)} className="mt-2 py-2 px-4 bg-white text-black rounded-full font-semibold w-full text-center">
               Contact Us
             </Link>
           </nav>
