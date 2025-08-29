@@ -83,17 +83,28 @@ export default function ProductsPage() {
   };
 
   const getSection2Styles = (element: 'left' | 'right') => {
-    const progress = Math.min(1, Math.max(0, (scrollProgress - 0.67) * 3));
-    const easedProgress = 1 - Math.pow(1 - progress, 2);
-    if (element === 'left') {
-      return {
-        opacity: easedProgress,
-        transform: `translateX(${(1 - easedProgress) * -50}px)`,
-      };
+    let opacity = 1;
+    let translateX = 0;
+
+    // Animate In (when scrolling from Section 1 to Section 2)
+    const progressIn = Math.min(1, Math.max(0, (scrollProgress - 0.67) * 3));
+    const easedProgressIn = 1 - Math.pow(1 - progressIn, 2);
+
+    // Animate Out (when scrolling from Section 2 to Section 3)
+    const progressOut = Math.min(1, Math.max(0, (scrollProgress - 1.33) * 3));
+    const easedProgressOut = 1 - Math.pow(1 - progressOut, 2);
+
+    if (scrollProgress <= 1.33) { // Section 2 is animating in or fully visible
+      opacity = easedProgressIn;
+      translateX = (1 - easedProgressIn) * (element === 'left' ? -50 : 50);
+    } else { // Section 2 is animating out
+      opacity = 1 - easedProgressOut;
+      translateX = easedProgressOut * (element === 'left' ? -50 : 50);
     }
+
     return {
-      opacity: easedProgress,
-      transform: `translateX(${(1 - easedProgress) * 50}px)`,
+      opacity: opacity,
+      transform: `translateX(${translateX}px)`,
     };
   };
   
@@ -135,18 +146,20 @@ export default function ProductsPage() {
       {/* Coming Soon Section 2 */}
       <section className="h-full snap-start flex flex-col md:flex-row items-center justify-center text-center md:text-left relative overflow-hidden">
         <div style={{opacity: Math.min(1, Math.max(0, (scrollProgress - 0.67) * 3))}} className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_center,_rgba(128,0,128,0.3)_0%,_transparent_70%)]"></div>
-        <div style={getSection2Styles('left')} className="z-10 p-8 md:w-1/2">
+        {/* Image column (left) */}
+        <div style={getSection2Styles('left')} className="z-10 p-8 md:w-1/4 hidden md:block flex justify-end">
+          <div className="w-full h-64 bg-purple-900 bg-opacity-50 rounded-lg"></div>
+        </div>
+        {/* Text column (right) */}
+        <div style={getSection2Styles('right')} className="z-10 p-8 md:w-1/2">
             <h1 className="text-6xl md:text-8xl font-bold mb-4 text-purple-400">Coming Soon</h1>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-purple-300">Attendance Tracker App</h2>
             <p className="text-lg md:text-xl max-w-3xl mx-auto md:mx-0 text-gray-300 mb-8">
               Track attendance with ease. Our new app will help you manage and monitor attendance for your team, students, or events.
             </p>
-            <a href="https://www.linkedin.com/company/your-company" target="_blank" rel="noopener noreferrer" className="inline-block bg-purple-600 text-white py-3 px-8 rounded-full font-semibold hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <a href="https://www.linkedin.com/company/rediflow-ai/" target="_blank" rel="noopener noreferrer" className="inline-block bg-purple-600 text-white py-3 px-8 rounded-full font-semibold hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
               Follow us for updates &rarr;
             </a>
-        </div>
-        <div style={getSection2Styles('right')} className="z-10 p-8 md:w-1/2 hidden md:block">
-          <div className="w-full h-64 bg-purple-900 bg-opacity-50 rounded-lg"></div>
         </div>
         
         <button onClick={() => scrollToSection(0)} className="absolute bottom-24 right-24 bg-purple-600 text-white p-4 rounded-full hover:bg-purple-700 transition-colors duration-300 z-20">
