@@ -7,11 +7,10 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
   const [open, setOpen] = useState(false);
 
   return (
-    <header className={`${isHomePage ? "absolute" : "sticky"} top-0 left-0 w-full z-40`}>
+    <header className="sticky top-0 left-0 w-full z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-6 py-3 flex items-center justify-between bg-black/40 backdrop-blur-sm border border-transparent md:border-b md:border-white/5  rounded-none relative">
         <Link href="/" className="flex items-center gap-3 z-20">
           <Image src="/logo.png" alt="Rediflow AI" width={36} height={36} priority />

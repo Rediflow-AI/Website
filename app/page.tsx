@@ -3,12 +3,12 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12 md:p-16 bg-gray-950 text-gray-100 relative overflow-hidden">
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12  bg-gray-950 text-gray-100 relative overflow-hidden ">
       {/* Background gradient (unchanged) */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_center,_rgba(128,0,128,0.3)_0%,_transparent_70%)]"></div>
 
       <div className="z-10 w-full max-w-6xl text-center px-4 sm:px-0">
-        <div className="mt-6 sm:mt-10 mb-6 sm:mb-8 flex justify-center">
+        <div className="  mb-6 sm:mb-8 flex justify-center">
           <Link
             href="https://www.linkedin.com/company/rediflow-ai"
             target="_blank"
