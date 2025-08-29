@@ -14,12 +14,30 @@ h1, h2, h3 {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 .animate-fadeIn {
   animation: fadeIn 1s ease-out forwards;
 }
 
 .animate-slideInFromBottom {
   animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.animate-slideInFromRight {
+  animation: slideInFromRight 1s ease-out forwards;
 }
 
 :root {
